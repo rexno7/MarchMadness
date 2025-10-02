@@ -1,0 +1,29 @@
+<h1><%= @pool.poolname %> Teams</h1>
+
+<p>
+  <%= select_tag :region, options_for_select([ "1", "2", "3", "4" ], "1") %>
+</p>
+<table>
+<% for rownum in 0..63 %>
+  <% index = rownum %>
+  <tr>
+  <% if rownum % 2 == 0 %>
+    <td class=game><%= @teams[index/2].name %></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td class=game><%= @teams[(index/2)+32].name %></td>
+  <% elsif (rownum-1) % 4 == 0 %>
+    <td></td><td class=game>&nbsp;</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td class=game>&nbsp;</td><td></td>
+  <% elsif (rownum-3) % 8 == 0 %>
+    <td></td><td></td><td class=game>&nbsp;</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td class=game>&nbsp;</td><td></td><td></td>
+  <% elsif (rownum-7) % 16 == 0 %>
+    <td></td><td></td><td></td><td class=game>&nbsp;</td><td></td><td></td><td></td><td></td><td></td><td class=game>&nbsp;</td><td></td><td></td><td></td>
+  <% elsif (rownum-15) % 32 == 0 %>
+    <td></td><td></td><td></td><td></td><td class=game>&nbsp;</td><td></td><td></td><td></td><td class=game>&nbsp;</td><td></td><td></td><td></td><td></td>
+  <% elsif (rownum-31) % 64 == 0 %>
+    <td></td><td></td><td></td><td></td><td></td><td class=game>&nbsp;</td><td></td><td class=game>&nbsp;</td><td></td><td></td><td></td><td></td><td></td>
+  <% end %>
+  </tr>
+<% end %>
+    <td></td><td></td><td></td><td></td><td></td><td></td><td class=game>&nbsp;</td><td></td><td></td><td></td><td></td><td></td><td></td>
+</table>
+
+
+<p><%= link_to 'Back', pools_path %></p>

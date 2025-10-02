@@ -1,0 +1,25 @@
+<%= form_for @pool do |f| %>
+  <% if @pool.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@pool.errors.count, "error") %> prohibited this entry from being saved:</h2>
+
+      <ul>
+      <% @pool.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <div class="field">
+    <%= f.label :poolname %><br />
+    <%= f.text_field :poolname %>
+  </div>
+  <% i = 0 %>
+  <%= f.fields_for :teams do |builder| %>
+    <%= render "team_fields", { :f => builder, :i => i } %>
+    <% i += 1 %>
+  <% end %>
+  <div class="actions">
+    <%= f.submit "Submit" %>
+  </div>
+<% end %>

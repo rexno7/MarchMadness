@@ -1,0 +1,12 @@
+// Place all the styles related to the Entries controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+td:first-child {
+  text-align: left;
+}
+td {
+  font-size: 13px;
+  line-height: 13px;
+  min-width: 90px;
+  text-align: center;
+}

@@ -1,0 +1,8 @@
+class Pool < ActiveRecord::Base
+  attr_accessible :poolname
+
+  #has_many :picks, :as => :pickable #, :dependent => destroy
+  #has_many :picks
+  has_many :teams
+  has_many :entries #, :dependent => destroy
+end

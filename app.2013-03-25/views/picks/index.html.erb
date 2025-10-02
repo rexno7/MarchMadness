@@ -1,0 +1,230 @@
+<h1><%= @entry.entryname %> Picks</h1>
+
+<table>
+<% for rownum in 0..63 %>
+  <% index = rownum %>
+  <tr>
+  <% if rownum % 2 == 0 %>
+    <td class=game><%= link_to @teams[index/2].name, new_entry_pick_path(@entry, { :pick => @teams[index/2].name, :round => 0 + 1, :game => @teams[index/2].game / 2 } ) %></td>
+    <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+    <td class=game><%= link_to @teams[(index/2)+32].name, new_entry_pick_path(@entry, { :pick => @teams[(index/2)+32].name, :round => 0 + 1, :game => @teams[(index/2)+32].game / 2 } ) %></td>
+  <% elsif (rownum-1) % 4 == 0 %>
+    <td></td>
+      <% @leftPick = @picks[(index/4)] %>
+      <% @mpick = @mPicks[(index/4)] %>
+      <% if @leftPick.nil? %>
+        <td class=game id=wrong><%= "&nbsp;".html_safe %></td>
+      <% else %>
+        <td class=game 
+          <% if !@mpick.nil? %>
+            <% if @leftPick.pick == @mpick.pick %>
+              <%= 'id=correct' %>
+            <% else %>
+              <%= 'id=wrong' %>
+            <% end %>
+          <% end %>
+        >
+        <%= link_to @leftPick.pick, new_entry_pick_path(@entry, { :pick => @leftPick.pick, :round => @leftPick.round + 1, :game => @leftPick.game / 2 } ) %>
+        </td>
+      <% end %>
+    <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+      <% @rightPick = @picks[(index/4)+16] %>
+      <% @mpick = @mPicks[(index/4)+16] %>
+      <% if @rightPick.nil? %>
+        <td class=game id=wrong><%= "&nbsp;".html_safe %></td>
+      <% else %>
+        <td class=game
+          <% if !@mpick.nil? %>
+            <% if @rightPick.pick == @mpick.pick %>
+              <%= 'id=correct' %>
+            <% else %>
+              <%= 'id=wrong' %>
+            <% end %>
+          <% end %>
+        >
+        <%= link_to @rightPick.pick, new_entry_pick_path(@entry, { :pick => @rightPick.pick, :round => @rightPick.round + 1, :game => @rightPick.game / 2 } ) %>
+        </td>
+      <% end %>
+    <td></td>
+  <% elsif (rownum-3) % 8 == 0 %>
+    <td></td><td></td>
+      <% @leftPick = @picks[(index/8)+32] %>
+      <% @mpick = @mPicks[(index/8)+32] %>
+      <% if @leftPick.nil? %>
+        <td class=game id=wrong><%= "&nbsp;".html_safe %></td>
+      <% else %>
+        <td class=game
+          <% if !@mpick.nil? %>
+            <% if @leftPick.pick == @mpick.pick %>
+              <%= 'id=correct' %>
+            <% else %>
+              <%= 'id=wrong' %>
+            <% end %>
+          <% end %>
+        >
+        <%= link_to @leftPick.pick, new_entry_pick_path(@entry, { :pick => @leftPick.pick, :round => @leftPick.round + 1, :game => @leftPick.game / 2 } ) %>
+        </td>
+      <% end %>
+    <td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+      <% @rightPick = @picks[(index/8)+32+8] %>
+      <% @mpick = @mPicks[(index/8)+32+8] %>
+      <% if @rightPick.nil? %>
+        <td class=game id=wrong><%= "&nbsp;".html_safe %></td>
+      <% else %>
+        <td class=game
+          <% if !@mpick.nil? %>
+            <% if @rightPick.pick == @mpick.pick %>
+              <%= 'id=correct' %>
+            <% else %>
+              <%= 'id=wrong' %>
+            <% end %>
+          <% end %>
+        >
+        <%= link_to @rightPick.pick, new_entry_pick_path(@entry, { :pick => @rightPick.pick, :round => @rightPick.round + 1, :game => @rightPick.game / 2 } ) %>
+        </td>
+      <% end %>
+    <td></td><td></td>
+  <% elsif (rownum-7) % 16 == 0 %>
+    <td></td><td></td><td></td>
+      <% @leftPick = @picks[(index/16)+48] %>
+      <% @mpick = @mPicks[(index/16)+48] %>
+      <% if @leftPick.nil? %>
+        <td class=game id=wrong><%= "&nbsp;".html_safe %></td>
+      <% else %>
+        <td class=game
+          <% if !@mpick.nil? %>
+            <% if @leftPick.pick == @mpick.pick %>
+              <%= 'id=correct' %>
+            <% else %>
+              <%= 'id=wrong' %>
+            <% end %>
+          <% end %>
+        >
+        <%= link_to @leftPick.pick, new_entry_pick_path(@entry, { :pick => @leftPick.pick, :round => @leftPick.round + 1, :game => @leftPick.game / 2 } ) %>
+        </td>
+      <% end %>
+    <td></td><td></td><td></td><td></td><td></td>
+      <% @rightPick = @picks[(index/16)+48+4] %>
+      <% @mpick = @mPicks[(index/16)+48+4] %>
+      <% if @rightPick.nil? %>
+        <td class=game id=wrong><%= "&nbsp;".html_safe %></td>
+      <% else %>
+        <td class=game
+          <% if !@mpick.nil? %>
+            <% if @rightPick.pick == @mpick.pick %>
+              <%= 'id=correct' %>
+            <% else %>
+              <%= 'id=wrong' %>
+            <% end %>
+          <% end %>
+        >
+        <%= link_to @rightPick.pick, new_entry_pick_path(@entry, { :pick => @rightPick.pick, :round => @rightPick.round + 1, :game => @rightPick.game / 2 } ) %>
+        </td>
+      <% end %>
+    <td></td><td></td><td></td>
+  <% elsif (rownum-15) % 32 == 0 %>
+    <td></td><td></td><td></td><td></td>
+      <% @leftPick = @picks[(index/32)+56] %>
+      <% @mpick = @mPicks[(index/32)+56] %>
+      <% if @leftPick.nil? %>
+        <td class=game id=wrong><%= "&nbsp;".html_safe %></td>
+      <% else %>
+        <td class=game
+          <% if !@mpick.nil? %>
+            <% if @leftPick.pick == @mpick.pick %>
+              <%= 'id=correct' %>
+            <% else %>
+              <%= 'id=wrong' %>
+            <% end %>
+          <% end %>
+        >
+        <%= link_to @leftPick.pick, new_entry_pick_path(@entry, { :pick => @leftPick.pick, :round => @leftPick.round + 1, :game => @leftPick.game / 2 } ) %>
+        </td>
+      <% end %>
+    <td></td><td></td><td></td>
+      <% @rightPick = @picks[(index/32)+56+2] %>
+      <% @mpick = @mPicks[(index/32)+56+2] %>
+      <% if @rightPick.nil? %>
+        <td class=game id=wrong><%= "&nbsp;".html_safe %></td>
+      <% else %>
+        <td class=game
+          <% if !@mpick.nil? %>
+            <% if @rightPick.pick == @mpick.pick %>
+              <%= 'id=correct' %>
+            <% else %>
+              <%= 'id=wrong' %>
+            <% end %>
+          <% end %>
+        >
+        <%= link_to @rightPick.pick, new_entry_pick_path(@entry, { :pick => @rightPick.pick, :round => @rightPick.round + 1, :game => @rightPick.game / 2 } ) %>
+        </td>
+      <% end %>
+    <td></td><td></td><td></td><td></td>
+  <% elsif (rownum-31) % 64 == 0 %>
+    </tr><tr><td>&nbsp;<td></tr><tr>
+    <td></td><td></td><td></td><td></td><td></td>
+      <% @leftPick = @picks[(index/64)+60] %>
+      <% @mpick = @mPicks[(index/64)+60] %>
+      <% if @leftPick.nil? %>
+        <td class=game id=wrong><%= "&nbsp;".html_safe %></td>
+      <% else %>
+        <td class=game
+          <% if !@mpick.nil? %>
+            <% if @leftPick.pick == @mpick.pick %>
+              <%= 'id=correct' %>
+            <% else %>
+              <%= 'id=wrong' %>
+            <% end %>
+          <% end %>
+        >
+        <%= link_to @leftPick.pick, new_entry_pick_path(@entry, { :pick => @leftPick.pick, :round => @leftPick.round + 1, :game => @leftPick.game / 2 } ) %>
+        </td>
+      <% end %>
+    <td></td>
+      <% @rightPick = @picks[(index/64)+60+1] %>
+      <% @mpick = @mPicks[(index/64)+60+1] %>
+      <% if @rightPick.nil? %>
+        <td class=game id=wrong><%= "&nbsp;".html_safe %></td>
+      <% else %>
+        <td class=game
+          <% if !@mpick.nil? %>
+            <% if @rightPick.pick == @mpick.pick %>
+              <%= 'id=correct' %>
+            <% else %>
+              <%= 'id=wrong' %>
+            <% end %>
+          <% end %>
+        >
+        <%= link_to @rightPick.pick, new_entry_pick_path(@entry, { :pick => @rightPick.pick, :round => @rightPick.round + 1, :game => @rightPick.game / 2 } ) %>
+        </td>
+      <% end %>
+    <td></td><td></td><td></td><td></td><td></td>
+    </tr><tr><td>&nbsp;</td>
+    </tr><tr>
+    <td></td><td></td><td></td><td></td><td></td><td></td>
+      <% if @picks[62].nil? %>
+        <td class=game id=wrong><%= "&nbsp;".html_safe %></td>
+      <% else %>
+        <td class=game
+          <% if !@mPicks[62].nil? %>
+            <% if @picks[62].pick == @mPicks[62].pick %>
+              <%= 'id=correct' %>
+            <% else %>
+              <%= 'id=wrong' %>
+            <% end %>
+          <% end %>
+        >
+        <%= @picks[62].pick %>
+        </td>
+      <% end %>
+    <td></td><td></td><td></td><td></td><td></td><td></td>
+    </tr><tr>
+  <% end %>
+  </tr>
+<% end %>
+</table>
+
+
+<br />
+
+<%= link_to 'Back', pool_entries_path(@pool) %>

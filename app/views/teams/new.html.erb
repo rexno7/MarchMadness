@@ -1,0 +1,13 @@
+<h1><%= @pool.poolname %> Teams</h1>
+
+<% form_for([@pool,@teams]) do |f| %>
+
+  <% (0..63).each do |index| %>
+    <% fields_for :teams[index] do |ff| %>
+      <p>
+      <%= render 'form', :locals => { :ff => ff } %>
+      </p>
+    <% end %>
+  <% end %>
+<% end %>
+

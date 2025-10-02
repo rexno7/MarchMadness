@@ -1,0 +1,6 @@
+class Team < ActiveRecord::Base
+  attr_accessible :game, :name
+  round = 0
+
+  belongs_to :pool
+end

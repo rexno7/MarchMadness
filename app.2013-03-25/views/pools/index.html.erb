@@ -1,0 +1,24 @@
+<h1>Listing Pools</h1>
+
+<table>
+  <tr>
+    <th>Pool Name</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @pools.each do |pool| %>
+  <tr>
+    <td><a href=<%= pool_entries_path(pool) %>><%= pool.poolname %></a>
+    <td><%= link_to 'Show', pool_teams_path(pool) %></td>
+    <td><%= link_to 'Edit', edit_pool_path(pool) %></td>
+    <td><%= link_to 'Destroy', pool, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Pool', new_pool_path %>
+

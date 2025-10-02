@@ -1,0 +1,31 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Entryname:</b>
+  <%= @entry.entryname %>
+</p>
+
+<p>
+  <b>Maxpoints:</b>
+  <%= @entry.maxpoints %>
+</p>
+
+<p>
+  <b>Points:</b>
+  <%= @entry.points %>
+</p>
+
+<p>
+  <b>Tiebreaker:</b>
+  <%= @entry.tiebreaker %>
+</p>
+
+<%= link_to 'Back', pool_entries_path(@pool) %> |
+<%= link_to 'Edit', edit_pool_entry_path(@pool,@entry) %> |
+<%= link_to 'Manage Picks', entry_picks_path(@entry) %>
+
+<p>
+<% @entry.picks.each do |pick| %>
+  <%= pick.pick %><br/>
+<% end %>
+</p>

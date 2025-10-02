@@ -1,0 +1,12 @@
+<% form_for @pool do |f| %>
+
+  <% (0..63).each do |index| %>
+    <% fields_for :teams do |ff| %>
+      <p>
+      <%= ff.collection_select :name, :game, :pool_id, :id %>
+      </p>
+    <% end %>
+  <% end %>
+
+  <%= f.submit 'Create' %>
+<% end %>

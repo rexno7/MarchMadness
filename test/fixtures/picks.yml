@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  pick: MyString
+  round: 1
+  game: 1
+  entry: 
+  pool: 
+
+two:
+  pick: MyString
+  round: 1
+  game: 1
+  entry: 
+  pool: 

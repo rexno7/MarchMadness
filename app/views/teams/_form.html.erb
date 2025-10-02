@@ -1,0 +1,19 @@
+<% form_for :pool, :url => pools_path do |f| %>
+  <p>
+    <%= f.label :poolname %>
+    <%= f.text_field :poolname %>
+  </p>
+  <% for team in @pool.teams %>
+    <% fields_for "pool[team_attributes][]", team do |team_form| %>
+      <p>
+        <%= team_form.label :name %>
+        <%= team_form.text_field :name %>
+      </p>
+      <p>
+        <%- team_form.label :game %>
+        <%= team_form.number_field :game %>
+      </p>
+    <% end %>
+  <% end %>
+  <p><%= submit_tab "Create Pool" %></p>
+<% end %>

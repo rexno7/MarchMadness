@@ -1,0 +1,39 @@
+<%= stylesheet_link_tag "entries" %>
+<h1>Listing entries</h1>
+<p><%= link_to 'Update Master', entry_picks_path(@master) %></p>
+<table>
+  <tr>
+    <th><%= link_to 'Entryname', pool_entries_path(:sort_by => 'entryname') %></th>
+    <th><%= link_to 'Points', pool_entries_path(:sort_by => 'points') %></th>
+    <th><%= link_to 'Maxpoints', pool_entries_path(:sort_by => 'maxpoints') %></th>
+    <th>Winner</th>
+    <th>Runner Up</th>
+    <th>Final Four</th>
+    <th>Final Four</th>
+    <th>Tiebreaker</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @entries.each do |entry| %>
+  <tr>
+    <td><a href=<%= entry_picks_path(entry) %>><%= entry.entryname %></a></td>
+    <td><%= entry.points %></td>
+    <td><%= entry.maxpoints %></td>
+    <td><%= @finalFourPicks[entry.id][0] %></td>
+    <td><%= @finalFourPicks[entry.id][1] %></td>
+    <td><%= @finalFourPicks[entry.id][2] %></td>
+    <td><%= @finalFourPicks[entry.id][3] %></td>
+    <td><%= entry.tiebreaker %></td>
+    <td><%= link_to 'Show', pool_entry_path(@pool,entry)%></td>
+    <td><%= link_to 'Edit', edit_pool_entry_path(@pool,entry) %></td>
+    <td><%= link_to 'Destroy', [@pool,entry], method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'Back', pools_path %> |
+<%= link_to 'New Entry', new_pool_entry_path(@pool) %>

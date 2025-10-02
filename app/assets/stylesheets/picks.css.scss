@@ -1,0 +1,42 @@
+// Place all the styles related to the Pick controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+td {
+  padding: 0px 0px 0px 0px;
+  min-width: 110px;
+  font-size: 11px;
+  line-height: 11px;
+}
+/*table {
+  margin-left: auto;
+  margin-right: auto;
+}*/
+a:link { 
+  color: #000000;
+}
+a:visited { 
+  color: #000000;
+}
+a:hover {
+  background: #C0C0C0;
+}
+
+#correct {
+  background-color: lightgreen;
+}
+#wrong {
+  background-color: lightcoral;
+}
+
+.game{
+  border-bottom: 1px solid black;
+}
+.inside {
+  border-right: 1px solid black;
+}
+.underside {
+  color: gray;
+  text-align: center;
+  vertical-align: top;
+  padding-top: 0px;
+}

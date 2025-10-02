@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  entryname: MyString
+  maxpoints: 1
+  points: 1
+  tiebreaker: 1
+
+two:
+  entryname: MyString
+  maxpoints: 1
+  points: 1
+  tiebreaker: 1

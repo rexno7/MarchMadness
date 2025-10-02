@@ -1,0 +1,38 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Poolname:</b>
+  <%= @pool.poolname %>
+</p>
+
+<p>
+  <b>Entries:</b>
+  <table class="sub_menu_table">
+    <tr>
+      <th>Entryname</th>
+      <th>Points</th>
+      <th>Maxpoints</th>
+      <th>Tiebreaker</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+
+  <% @pool.entries.each do |e| %>
+    <tr style="border: 1px solid black">
+      <td><%= e.entryname %></td>
+      <td><%= e.points %></td>
+      <td><%= e.maxpoints %></td>
+      <td><%= e.tiebreaker %></td>
+      <td><%= link_to 'Show', pool_entry_path(e) %></td>
+      <td><%= link_to 'Edit', edit_pool_entry_path(e) %></td>
+      <td><%= link_to 'Destroy', pool_entry, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    </tr>
+  <% end %>
+    <tr>
+      <td colspan="4"><%= link_to "Add New Entry", new_pool_entry_path %></td>
+    </tr>
+  </table>
+</p>
+
+<%= link_to "Back", pools_path %>

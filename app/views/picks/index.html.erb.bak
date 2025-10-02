@@ -1,0 +1,47 @@
+<h1><%= @entry.entryname %> Picks</h1>
+
+<table>
+  <tr>
+    <th>Pick</th>
+    <th>Round</th>
+    <th>Game</th>
+    <th></th>
+  </tr>
+
+<% @picks.each do |pick| %>
+  <tr>
+    <td><%= pick.pick %></td>
+    <td><%= pick.round %></td>
+    <td><%= pick.game %></td>
+    <td><%= link_to 'Destroy', [@entry,pick], method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<table>
+<% for rownum in 0..63 %>
+  <% index = rownum %>
+  <tr>
+  <% if rownum % 2 == 0 %>
+    <td class=game><%= @picks[index/2].name %></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td class=game><%= @picks[(index/2)+16].name %></td>
+  <% elsif (rownum-1) % 4 == 0 %>
+    <td></td><td class=game><%= @picks[(index/4)+32].name %></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td class=game><%= @picks[(index/4)+8].name %></td><td></td>
+  <% elsif (rownum-3) % 8 == 0 %>
+    <td></td><td></td><td class=game>&nbsp;</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td class=game>&nbsp;</td><td></td><td></td>
+  <% elsif (rownum-7) % 16 == 0 %>
+    <td></td><td></td><td></td><td class=game>&nbsp;</td><td></td><td></td><td></td><td></td><td></td><td class=game>&nbsp;</td><td></td><td></td><td></td>
+  <% elsif (rownum-15) % 32 == 0 %>
+    <td></td><td></td><td></td><td></td><td class=game>&nbsp;</td><td></td><td></td><td></td><td class=game>&nbsp;</td><td></td><td></td><td></td><td></td>
+  <% elsif (rownum-31) % 64 == 0 %>
+    <td></td><td></td><td></td><td></td><td></td><td class=game>&nbsp;</td><td></td><td class=game>&nbsp;</td><td></td><td></td><td></td><td></td><td></td>
+  <% end %>
+  </tr>
+<% end %>
+    <td></td><td></td><td></td><td></td><td></td><td></td><td class=game>&nbsp;</td><td></td><td></td><td></td><td></td><td></td><td></td>
+</table>
+
+
+<br />
+
+<%= link_to 'Back', pool_entry_path(@pool, @entry) %> |
+<%= link_to 'New Pick', new_entry_pick_path(@entry) %>
